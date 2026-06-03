@@ -4,12 +4,12 @@
 
 This project analyzes customer behaviour, sales performance, top product categories and delivery efficiency using the Olist E-Commerce dataset. 
 
-THe goal was to build an end-to-end analytics solution covering:
+The goal was to build an end-to-end analytics solution covering:
 - Data loading and transformation with Python,
 - PostreSQL database design and management,
 - SQL-basen business analysis,
 - Interactive Power BI dashboards,
--Business insights and recomendations.
+- Business insights and recommendations.
 
 The project demonstrates a complete analytics workflow from raw CSV files to business-ready dashboards.
 
@@ -17,23 +17,23 @@ The project demonstrates a complete analytics workflow from raw CSV files to bus
 
 The project purpose is to answer questions listed below: 
 
-- Sales Performance: 
--- What is the total revenue made?
--- How does the revenue change over time?
--- What is the average order value?
+### Sales Performance: 
+- What is the total revenue made?
+- How does the revenue change over time?
+- What is the average order value?
 
-- Customer Analysis:
--- What is the percentage of customers that make repeat purchases?
--- How can customers be segmented based on purchasing behaviour?
+### Customer Analysis:
+- What is the percentage of customers that make repeat purchases?
+- How can customers be segmented based on purchasing behaviour?
 
-- Product Analysis:
--- Which categories of products generate the highest revenue?
--- Which categories have the highest rating?
--- Which categories have the lowest rating?
+### Product Analysis:
+- Which categories of products generate the highest revenue?
+- Which categories have the highest rating?
+- Which categories have the lowest rating?
 
-- Delivery Analysis:
--- How often are orders delivered on time?
--- How does the delivery performane affect customer satisfaction?
+### Delivery Analysis:
+- How often are orders delivered on time?
+- How does the delivery performane affect customer satisfaction?
 
 ## Dataset
 
@@ -67,15 +67,21 @@ Version Control:
 
 ## Data Pipeline
 
-CSV Files
-    ↓
+```text
+Raw CSV Files
+      │
+      ▼
 Python ETL (Pandas + SQLAlchemy)
-    ↓
+      │
+      ▼
 PostgreSQL Database
-    ↓
+      │
+      ▼
 SQL Analysis
-    ↓
+      │
+      ▼
 Power BI Dashboard
+```
 
 The analysis is based on the following tables:
 
@@ -89,21 +95,41 @@ The analysis is based on the following tables:
 
 Relationships were modeled in Power BI to support customer, product, and delivery analysis.
 
+## Executive Summary
+
+The analysis identified two major business challenges.
+
+First, customer retention is extremely low, with only 3.12% of customers making repeat purchases.
+
+Second, delivery performance has a significant impact on customer satisfaction. Orders delivered on time achieved an average review score of 4.29, while delayed deliveries averaged only 2.57.
+
+Despite these challenges, the marketplace generated 13.59M BRL in revenue and experienced strong growth throughout the analyzed period.
+
 ## Key Findings
 
-1. Analysis showed that customer retention is a major challenge for the business. 96.88% of customers made only one order with a Repeat Customer Rate of only 3.12%.
+### Customer Retention is Extremely Low
+
+Analysis showed that customer retention is a major challenge for the business. 96.88% of customers made only one order with a Repeat Customer Rate of only 3.12%.
 
 This indicates that the platform relies mainly on acquiring new customers than repeating ones. Improving retention and loyalty programs could increase long-term revenue.
 
-2. Delivery Pefrormance makes a strong inlfuence on Customer Satisfaction. On-time deliveries received an average reveiw score of 4.29, while late deliveries received an average of 2.57. The platform maintained an On-time Delivery Rate of 91.89%. 
+### Delivery Performance Drives Customer Satisfaction
+
+ Delivery Pefrormance makes a strong inlfuence on Customer Satisfaction. On-time deliveries received an average reveiw score of 4.29, while late deliveries received an average of 2.57. The platform maintained an On-time Delivery Rate of 91.89%. 
 
 Customers who experienced delays of delivery were much less satisfies, which shows the importance of logistics efficiency.
 
-3. Revenue analysis showed strong business growth over the analyzed period. Total revenue was 13.59M BRL with and average order value of 137.75 BRL. Monthly revenue increased throughout 2017 and stabilized in 2018.
+### Revenue Grew Rapidly During Analyzed Period
 
-4. The analysis showed differences between revenue-generating and volume-generating categories. The category with the highest revenue was Health and Beauty (1.25M BRL) while being 2nd in the volume ranking. Bed Bath & Table recorder the highest sales volume and 3rd in the highest revenue ranking. Watches & gifts ranked second in revenue, while having a lower sales volume (7th in the ranking). 
+Revenue analysis showed strong business growth over the analyzed period. Total revenue was 13.59M BRL with and average order value of 137.75 BRL. Monthly revenue increased throughout 2017 and stabilized in 2018.
 
-5. Highest-rated categories were: 
+### Revenue and Sales Volume Differ Across Categories
+
+The analysis showed differences between revenue-generating and volume-generating categories. The category with the highest revenue was Health and Beauty (1.25M BRL) while being 2nd in the volume ranking. Bed Bath & Table recorder the highest sales volume and 3rd in the highest revenue ranking. Watches & gifts ranked second in revenue, while having a lower sales volume (7th in the ranking). 
+
+### Product Satisfaction Varies Across Categories
+
+Highest-rated categories were: 
 - Cds, Dvds, Musicals
 - Fashion CHildren Clothing
 - Books General Interet.
@@ -125,42 +151,14 @@ Lowest-rated categories were:
 
 ## Repository Structure
 
-ecommerce-customer-analytics/
-│
-├── dashboard/
-│   └── ecommerce_customer_analytics.pbix
-│
-├── data/
-│   ├── processed/
-│   └── raw/
-│       ├── olist_customers_dataset.csv
-│       ├── olist_geolocation_dataset.csv
-│       ├── olist_order_items_dataset.csv
-│       ├── olist_order_payments_dataset.csv
-│       ├── olist_order_reviews_dataset.csv
-│       ├── olist_orders_dataset.csv
-│       ├── olist_products_dataset.csv
-│       ├── olist_sellers_dataset.csv
-│       └── product_category_name_translation.csv
-│
-├── python/
-│   └── etl_load.py
-│
-├── screenshots/
-│   ├── executive_overview.png
-│   └── customer_delivery_insights.png
-│
-├── sql/
-│   ├── create_tables.sql
-│   ├── 01_data_quality_checks.sql
-│   ├── 02_sales_analysis.sql
-│   ├── 03_customer_analysis.sql
-│   ├── 04_delivery_analysis.sql
-│   └── 05_product_analysis.sql
-│
-├── .env.example
-├── .gitignore
-└── README.md
+- **dashboard/** – Power BI dashboard (.pbix)
+- **data/raw/** – source CSV files
+- **python/** – ETL pipeline
+- **sql/** – SQL analysis queries
+- **screenshots/** – dashboard screenshots
+- **.env.example** – environment variables template
+- **README.md** – project documentation
+
 
 ## Future Improvements
 
@@ -171,3 +169,11 @@ Potential enhancements for future iterations:
 - Geographic sales analysis
 - Sales forecasting
 - Interactive drill-through reports in Power BI
+
+## Author
+
+**Marek Szostek**
+
+LinkedIn: https://www.linkedin.com/in/marek-szostek/
+
+GitHub: https://github.com/marekszostek
